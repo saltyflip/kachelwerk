@@ -65,7 +65,7 @@ function DialogInhalt({
         transition={{ duration: 0.16 }}
       >
         <h2 className="text-base font-semibold">{titel}</h2>
-        <p className="text-leise mt-2 text-sm leading-relaxed">{text}</p>
+        <p className="text-leise mt-2 text-sm leading-relaxed whitespace-pre-line">{text}</p>
 
         {tippwort && (
           <label className="mt-4 block">

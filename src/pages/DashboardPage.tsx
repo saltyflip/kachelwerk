@@ -4,8 +4,10 @@ import { HabitSheet } from '../components/form/HabitSheet';
 import { SortableHabitList } from '../components/habit/SortableHabitList';
 import { PageHeader } from '../components/layout/PageHeader';
 import { Button } from '../components/ui/Button';
+import { BackupHinweis } from '../components/ui/BackupHinweis';
 import { EmptyState } from '../components/ui/EmptyState';
 import { setzeAnzahl, setzeReihenfolge, tippeHabitAn } from '../db/repo';
+import { useBackupErinnerung } from '../hooks/useBackupErinnerung';
 import { useAktiveHabits, useAlleAnzahlKarten } from '../hooks/useHabits';
 import { useHeute } from '../hooks/useHeute';
 import { useToast } from '../hooks/useToast';
@@ -17,6 +19,7 @@ export default function DashboardPage() {
   const karten = useAlleAnzahlKarten();
   const heuteSchluessel = useHeute();
   const { zeige } = useToast();
+  const backup = useBackupErinnerung();
   const [sheet, setSheet] = useState<{ offen: boolean; nr: number }>({ offen: false, nr: 0 });
 
   const oeffneAnlegen = () => setSheet((bisher) => ({ offen: true, nr: bisher.nr + 1 }));
@@ -50,6 +53,8 @@ export default function DashboardPage() {
       />
 
       <div className="flex-1 px-4">
+        {backup.zeigen && <BackupHinweis tage={backup.tage} onSpaeter={backup.spaeter} />}
+
         {laedt && <SkelettListe />}
 
         {!laedt && habits.length === 0 && (
