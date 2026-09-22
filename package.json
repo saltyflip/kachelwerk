@@ -3,7 +3,28 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Kachelwerk - Habit-Tracker als lokale PWA, offline und ohne Account",
+  "description": "Kachelwerk - Habit-Tracker als lokale PWA, offline und ohne Konto",
+  "license": "MIT",
+  "author": "Filip Tomsik",
+  "homepage": "https://saltyflip.github.io/kachelwerk/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saltyflip/kachelwerk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saltyflip/kachelwerk/issues"
+  },
+  "keywords": [
+    "habit-tracker",
+    "pwa",
+    "offline-first",
+    "indexeddb",
+    "react",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -13,7 +34,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "prebuild": "node scripts/generate-icons.mjs",
-    "generate:icons": "node scripts/generate-icons.mjs"
+    "generate:icons": "node scripts/generate-icons.mjs",
+    "licenses": "node scripts/generate-notices.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
