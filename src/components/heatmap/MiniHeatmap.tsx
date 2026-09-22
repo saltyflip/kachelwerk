@@ -3,13 +3,13 @@ import { farbeHex, mitDeckkraft } from '../../lib/colors';
 import type { Kachel } from '../../lib/heatmap';
 import { formatiereKurz } from '../../lib/dates';
 
-/** Deckkraft je Intensitaetsstufe (0 = leer). */
+/** Deckkraft je Intensitätsstufe (0 = leer). */
 const DECKKRAFT = [0, 0.3, 0.52, 0.76, 1] as const;
 
 interface MiniHeatmapProps {
   gitter: Kachel[][];
   farbe: string;
-  /** Kachelgroesse in px; ohne Angabe fuellen die Kacheln die Breite. */
+  /** Kachelgröße in px; ohne Angabe fuellen die Kacheln die Breite. */
   kachelGroesse?: number;
   onKachelKlick?: (datum: string) => void;
 }

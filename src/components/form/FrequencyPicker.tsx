@@ -2,7 +2,7 @@ import { WOCHENTAG_KURZ, WOCHENTAG_LANG, type Frequenz, type IsoWochentag } from
 import { Stepper } from '../ui/Stepper';
 
 const TYPEN = [
-  { id: 'taeglich', label: 'Taeglich' },
+  { id: 'taeglich', label: 'Täglich' },
   { id: 'wochentage', label: 'Wochentage' },
   { id: 'malProWoche', label: 'X / Woche' },
 ] as const;
@@ -71,7 +71,7 @@ export function FrequencyPicker({ wert, onAendern }: FrequencyPickerProps) {
             })}
           </div>
           {(wert.wochentage ?? []).length === 0 && (
-            <p className="text-gefahr mt-2 text-xs">Waehle mindestens einen Tag aus.</p>
+            <p className="text-gefahr mt-2 text-xs">Wähle mindestens einen Tag aus.</p>
           )}
         </div>
       )}
@@ -89,7 +89,7 @@ export function FrequencyPicker({ wert, onAendern }: FrequencyPickerProps) {
       )}
 
       {wert.typ === 'taeglich' && (
-        <p className="text-schwach mt-2 text-xs">Jeder Tag zaehlt zur Serie.</p>
+        <p className="text-schwach mt-2 text-xs">Jeder Tag zählt zur Serie.</p>
       )}
     </div>
   );

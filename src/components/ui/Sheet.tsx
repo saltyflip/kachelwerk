@@ -74,7 +74,7 @@ export function Sheet({ offen, onSchliessen, titel, children, fuss }: SheetProps
             <button
               type="button"
               onClick={onSchliessen}
-              aria-label="Schliessen"
+              aria-label="Schließen"
               className="text-leise hover:bg-vertiefung hover:text-text flex size-11 items-center justify-center rounded-full transition"
             >
               <X size={20} />

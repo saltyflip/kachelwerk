@@ -19,7 +19,7 @@ export function PageHeader({ titel, untertitel, zurueck = false, aktion }: PageH
           <button
             type="button"
             onClick={() => navigiere(-1)}
-            aria-label="Zurueck"
+            aria-label="Zurück"
             className="text-leise hover:bg-vertiefung hover:text-text -ml-2 flex size-11 shrink-0 items-center justify-center rounded-full transition"
           >
             <ChevronLeft size={22} />

@@ -27,7 +27,7 @@ export interface Frequenz {
   typ: FrequenzTyp;
   /** Nur bei typ === 'wochentage': geplante ISO-Wochentage (1 = Mo). */
   wochentage?: IsoWochentag[];
-  /** Nur bei typ === 'malProWoche': Sollwert 1..7 erfuellte Tage je Woche. */
+  /** Nur bei typ === 'malProWoche': Sollwert 1..7 erfüllte Tage je Woche. */
   malProWoche?: number;
 }
 
@@ -37,7 +37,7 @@ export interface Habit {
   beschreibung?: string;
   /** Emoji ("💧") oder Lucide-Icon in der Form "lucide:droplet". */
   icon: string;
-  /** Schluessel aus der Palette in lib/colors.ts, z. B. 'smaragd'. */
+  /** Schlüssel aus der Palette in lib/colors.ts, z. B. 'smaragd'. */
   farbe: string;
   /** Wie oft der Habit pro Tag erledigt werden soll (>= 1). */
   zielProTag: number;
@@ -54,7 +54,7 @@ export interface Completion {
   habitId: string;
   /** Lokales Datum im Format YYYY-MM-DD. */
   datum: string;
-  /** Anzahl der Erledigungen an diesem Tag (> 0; bei 0 wird der Eintrag geloescht). */
+  /** Anzahl der Erledigungen an diesem Tag (> 0; bei 0 wird der Eintrag gelöscht). */
   anzahl: number;
 }
 
@@ -65,9 +65,9 @@ export interface EinstellungsEintrag {
   wert: unknown;
 }
 
-/** Fuer das Anlegen eines Habits benoetigte Felder. */
+/** Für das Anlegen eines Habits benötigte Felder. */
 export type HabitEntwurf = Omit<Habit, 'id' | 'erstelltAm' | 'archiviert' | 'reihenfolge'> &
   Partial<Pick<Habit, 'erstelltAm' | 'archiviert' | 'reihenfolge'>>;
 
-/** Tagesschluessel (YYYY-MM-DD) -> Anzahl. */
+/** Tagesschlüssel (YYYY-MM-DD) -> Anzahl. */
 export type AnzahlKarte = ReadonlyMap<string, number>;

@@ -8,7 +8,7 @@ import SettingsPage from './pages/SettingsPage';
 import StatsOverviewPage from './pages/StatsOverviewPage';
 
 export default function App() {
-  // Setzt die Theme-Klasse am <html>-Element und haelt sie aktuell
+  // Setzt die Theme-Klasse am <html>-Element und hält sie aktuell
   useTheme();
 
   return (

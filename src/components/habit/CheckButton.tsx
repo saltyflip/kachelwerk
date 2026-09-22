@@ -10,7 +10,7 @@ interface CheckButtonProps {
   farbe: string;
   name: string;
   onTippen: () => void;
-  /** Langes Druecken setzt den Tag auf null zurueck. */
+  /** Langes Drücken setzt den Tag auf null zurück. */
   onZuruecksetzen?: () => void;
 }
 
@@ -76,7 +76,7 @@ export function CheckButton({
       onContextMenu={(e) => e.preventDefault()}
       aria-label={
         fertig
-          ? `${name}: heute erledigt, tippen zum Zuruecksetzen`
+          ? `${name}: heute erledigt, tippen zum Zurücksetzen`
           : `${name}: heute abhaken (${anzahl} von ${ziel})`
       }
       aria-pressed={fertig}

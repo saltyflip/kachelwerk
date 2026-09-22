@@ -16,7 +16,7 @@ interface HabitCardProps {
   heuteSchluessel: string;
   onTippen: (habit: Habit) => void;
   onZuruecksetzen: (habit: Habit) => void;
-  /** Griff fuer Drag & Drop, wird in Phase 6 gesetzt. */
+  /** Griff für Drag & Drop, wird in Phase 6 gesetzt. */
   griff?: ReactNode;
 }
 

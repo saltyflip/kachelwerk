@@ -24,7 +24,7 @@ type InhaltProps = Omit<ConfirmDialogProps, 'offen'>;
 function DialogInhalt({
   titel,
   text,
-  bestaetigenText = 'Bestaetigen',
+  bestaetigenText = 'Bestätigen',
   abbrechenText = 'Abbrechen',
   gefaehrlich = false,
   tippwort,
@@ -70,7 +70,7 @@ function DialogInhalt({
         {tippwort && (
           <label className="mt-4 block">
             <span className="text-schwach text-xs">
-              Tippe <strong className="text-text">{tippwort}</strong> zur Bestaetigung
+              Tippe <strong className="text-text">{tippwort}</strong> zur Bestätigung
             </span>
             <input
               autoFocus

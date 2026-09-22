@@ -65,7 +65,7 @@ export async function loescheHabit(id: string): Promise<void> {
   });
 }
 
-/** Speichert die neue Reihenfolge anhand der uebergebenen Id-Liste. */
+/** Speichert die neue Reihenfolge anhand der übergebenen Id-Liste. */
 export async function setzeReihenfolge(ids: string[]): Promise<void> {
   await db.transaction('rw', db.habits, async () => {
     await Promise.all(ids.map((id, index) => db.habits.update(id, { reihenfolge: index })));
@@ -105,7 +105,7 @@ export async function erhoeheAnzahl(habitId: string, datum: string, delta = 1): 
 }
 
 /**
- * Naechster Wert beim Antippen des Check-Buttons: hochzaehlen bis zum
+ * Nächster Wert beim Antippen des Check-Buttons: hochzählen bis zum
  * Tagesziel, danach wieder auf null (Haken entfernen).
  */
 export function naechsterWert(anzahl: number, zielProTag: number): number {
@@ -137,7 +137,7 @@ export async function alleEinstellungen(): Promise<EinstellungsEintrag[]> {
   return db.einstellungen.toArray();
 }
 
-/** Loescht saemtliche Daten (Habits, Eintraege, Einstellungen). */
+/** Loescht saemtliche Daten (Habits, Einträge, Einstellungen). */
 export async function setzeAllesZurueck(): Promise<void> {
   await db.transaction('rw', db.habits, db.completions, db.einstellungen, async () => {
     await db.completions.clear();

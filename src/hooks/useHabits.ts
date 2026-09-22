@@ -27,7 +27,7 @@ export function useCompletions(habitId: string | undefined): Completion[] | unde
   }, [habitId]);
 }
 
-/** Alle Eintraege, gruppiert als habitId -> (Datum -> Anzahl). */
+/** Alle Einträge, gruppiert als habitId -> (Datum -> Anzahl). */
 export function useAlleAnzahlKarten(): Map<string, Map<string, number>> | undefined {
   return useLiveQuery(async () => {
     const eintraege = await db.completions.toArray();

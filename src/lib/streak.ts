@@ -31,7 +31,7 @@ export function istGeplant(frequenz: Frequenz, schluessel: string): boolean {
   return true;
 }
 
-/** Ein Tag gilt als erfuellt, sobald die Anzahl das Tagesziel erreicht. */
+/** Ein Tag gilt als erfüllt, sobald die Anzahl das Tagesziel erreicht. */
 export function istErfuellt(habit: Habit, schluessel: string, karte: AnzahlKarte): boolean {
   const anzahl = karte.get(schluessel) ?? 0;
   return anzahl >= Math.max(1, habit.zielProTag);
@@ -43,8 +43,8 @@ export function fortschritt(habit: Habit, schluessel: string, karte: AnzahlKarte
 }
 
 /**
- * Frueheste fuer die Auswertung relevante Tagesgrenze: der Erstellungstag,
- * oder - falls Tage davor nachgetragen wurden - der aelteste Eintrag.
+ * Frueheste für die Auswertung relevante Tagesgrenze: der Erstellungstag,
+ * oder - falls Tage davor nachgetragen wurden - der älteste Eintrag.
  */
 export function startTag(habit: Habit, karte: AnzahlKarte): string {
   const erstellt = datumsSchluessel(new Date(habit.erstelltAm));
@@ -59,7 +59,7 @@ function malProWocheZiel(frequenz: Frequenz): number {
   return Math.min(7, Math.max(1, frequenz.malProWoche ?? 1));
 }
 
-/** Anzahl erfuellter Tage einer Woche, Zukunft ausgenommen. */
+/** Anzahl erfüllter Tage einer Woche, Zukunft ausgenommen. */
 function erfuellteTageDerWoche(
   habit: Habit,
   karte: AnzahlKarte,
@@ -110,7 +110,7 @@ function aktuelleStreakWochen(habit: Habit, karte: AnzahlKarte, heuteSchluessel:
   const ziel = malProWocheZiel(habit.frequenz);
   let streak = 0;
 
-  // Laufende Woche: erfuellt zaehlt, sonst Kulanz (die Serie laeuft weiter)
+  // Laufende Woche: erfüllt zählt, sonst Kulanz (die Serie läuft weiter)
   let laufend = wochenStart(heuteSchluessel);
   if (erfuellteTageDerWoche(habit, karte, laufend, heuteSchluessel) >= ziel) {
     streak += 1;
@@ -157,7 +157,7 @@ function laengsteStreakTage(habit: Habit, karte: AnzahlKarte, heuteSchluessel: s
       } else if (tag !== heuteSchluessel) {
         lauf = 0;
       }
-      // heute offen: weder zaehlen noch zuruecksetzen
+      // heute offen: weder zählen noch zurücksetzen
     }
     tag = verschiebeTage(tag, 1);
   }
@@ -198,7 +198,7 @@ export function laengsteStreak(
     : laengsteStreakTage(habit, karte, heuteSchluessel);
 }
 
-/** "12 Tage" bzw. "3 Wochen" - fuer das Badge auf der Karte. */
+/** "12 Tage" bzw. "3 Wochen" - für das Badge auf der Karte. */
 export function formatiereStreak(ergebnis: StreakErgebnis): string {
   if (ergebnis.einheit === 'wochen') {
     return ergebnis.wert === 1 ? '1 Woche' : `${ergebnis.wert} Wochen`;

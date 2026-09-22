@@ -49,9 +49,9 @@ function Abschnitt({ titel, children }: { titel: string; children: ReactNode }) 
 }
 
 /**
- * Das Formular haelt seinen Zustand lokal. Damit es bei jedem Oeffnen frisch
+ * Das Formular hält seinen Zustand lokal. Damit es bei jedem Oeffnen frisch
  * startet, vergibt die aufrufende Seite einen wechselnden key - so bleibt die
- * Schliessanimation erhalten, ohne dass alte Eingaben zurueckkehren.
+ * Schliessanimation erhalten, ohne dass alte Eingaben zurückkehren.
  */
 export function HabitSheet({ offen, habit, onSchliessen, onGespeichert }: HabitSheetProps) {
   const [form, setForm] = useState<Formular>(() => startwerte(habit));

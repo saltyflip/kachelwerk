@@ -36,7 +36,7 @@ export interface HabitStatistik {
 
 /**
  * Das Auswertungsfenster endet heute - ausser der heutige Tag ist geplant und
- * noch offen. Dann zaehlt er noch nicht mit, analog zur Kulanzregel der Streak.
+ * noch offen. Dann zählt er noch nicht mit, analog zur Kulanzregel der Streak.
  */
 function fensterEnde(habit: Habit, karte: AnzahlKarte, heuteSchluessel: string): string {
   const zaehltHeute =

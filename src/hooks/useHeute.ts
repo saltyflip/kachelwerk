@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { heute } from '../lib/dates';
 
 /**
- * Liefert den heutigen Datumsschluessel und aktualisiert ihn, wenn die App
- * ueber Mitternacht geoeffnet bleibt oder wieder in den Vordergrund kommt.
+ * Liefert den heutigen Datumsschlüssel und aktualisiert ihn, wenn die App
+ * über Mitternacht geoeffnet bleibt oder wieder in den Vordergrund kommt.
  */
 export function useHeute(): string {
   const [tag, setTag] = useState(heute);

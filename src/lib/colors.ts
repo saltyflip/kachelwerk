@@ -14,7 +14,7 @@ export const PALETTE: readonly Palettenfarbe[] = [
   { key: 'limette', name: 'Limette', hex: '#84cc16' },
   { key: 'smaragd', name: 'Smaragd', hex: '#22c55e' },
   { key: 'jade', name: 'Jade', hex: '#10b981' },
-  { key: 'tuerkis', name: 'Tuerkis', hex: '#14b8a6' },
+  { key: 'tuerkis', name: 'Türkis', hex: '#14b8a6' },
   { key: 'himmel', name: 'Himmel', hex: '#0ea5e9' },
   { key: 'azur', name: 'Azur', hex: '#3b82f6' },
   { key: 'indigo', name: 'Indigo', hex: '#6366f1' },
@@ -40,7 +40,7 @@ export function farbeName(key: string): string {
   return NACH_KEY.get(key)?.name ?? key;
 }
 
-/** Hex-Farbe mit Deckkraft als rgba()-String, z. B. fuer Heatmap-Kacheln. */
+/** Hex-Farbe mit Deckkraft als rgba()-String, z. B. für Heatmap-Kacheln. */
 export function mitDeckkraft(hex: string, deckkraft: number): string {
   const wert = hex.replace('#', '');
   const r = parseInt(wert.slice(0, 2), 16);

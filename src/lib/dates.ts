@@ -3,7 +3,7 @@ import { de } from 'date-fns/locale';
 import type { IsoWochentag } from '../types/models';
 
 /**
- * Alle Datumsberechnungen laufen ueber lokale Datumsschluessel im Format
+ * Alle Datumsberechnungen laufen über lokale Datumsschlüssel im Format
  * YYYY-MM-DD. toISOString() wird bewusst nirgends verwendet - es rechnet in
  * UTC und wuerde abends den Folgetag liefern.
  *
@@ -30,7 +30,7 @@ export function verschiebeTage(schluessel: string, tage: number): string {
   return datumsSchluessel(addDays(ausSchluessel(schluessel), tage));
 }
 
-/** Kalendertage zwischen zwei Schluesseln (b - a). */
+/** Kalendertage zwischen zwei Schlüsseln (b - a). */
 export function tagesDifferenz(a: string, b: string): number {
   const ms = ausSchluessel(b).getTime() - ausSchluessel(a).getTime();
   return Math.round(ms / 86_400_000);
@@ -40,7 +40,7 @@ export function isoWochentag(schluessel: string): IsoWochentag {
   return getISODay(ausSchluessel(schluessel)) as IsoWochentag;
 }
 
-/** Schluessel des Montags der Woche, in der der Tag liegt. */
+/** Schlüssel des Montags der Woche, in der der Tag liegt. */
 export function wochenStart(schluessel: string): string {
   return datumsSchluessel(startOfWeek(ausSchluessel(schluessel), { weekStartsOn: 1 }));
 }
@@ -73,7 +73,7 @@ export function istZukunft(schluessel: string, bezug: string = heute()): boolean
 }
 
 /**
- * Monatsraster fuer den Kalender: volle Wochen ab Montag, die den Monat
+ * Monatsraster für den Kalender: volle Wochen ab Montag, die den Monat
  * abdecken. Tage ausserhalb des Monats sind enthalten, damit das Gitter
  * rechteckig bleibt.
  */

@@ -16,7 +16,7 @@ export interface Kachel {
 }
 
 export interface GitterOptionen {
-  /** Anzahl der Wochenspalten (aelteste links). */
+  /** Anzahl der Wochenspalten (älteste links). */
   wochen: number;
   heuteSchluessel?: string;
 }
@@ -58,7 +58,7 @@ export function baueGitter(habit: Habit, karte: AnzahlKarte, optionen: GitterOpt
 }
 
 /**
- * Gitter ueber mehrere Habits hinweg: `werte` enthaelt je Tag die Anzahl
+ * Gitter über mehrere Habits hinweg: `werte` enthält je Tag die Anzahl
  * erledigter Habits, `hoechstwert` die Zahl aktiver Habits.
  */
 export function baueSammelGitter(
@@ -108,7 +108,7 @@ const MONATS_KUERZEL = [
   'Dez',
 ];
 
-/** Monatsbeschriftungen fuer die Jahres-Heatmap: je Monatswechsel eine Marke. */
+/** Monatsbeschriftungen für die Jahres-Heatmap: je Monatswechsel eine Marke. */
 export function monatsMarken(gitter: Kachel[][]): Monatsmarke[] {
   const marken: Monatsmarke[] = [];
   let letzterMonat = -1;

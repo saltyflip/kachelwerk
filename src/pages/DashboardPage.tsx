@@ -32,7 +32,7 @@ export default function DashboardPage() {
 
   const beiZuruecksetzen = (habit: Habit) => {
     void setzeAnzahl(habit.id, heuteSchluessel, 0);
-    zeige(`${habit.name} fuer heute zurueckgesetzt`);
+    zeige(`${habit.name} für heute zurückgesetzt`);
   };
 
   return (
@@ -59,7 +59,7 @@ export default function DashboardPage() {
           <EmptyState
             icon={<LayoutGrid size={26} />}
             titel="Noch keine Gewohnheit"
-            text="Lege deine erste Gewohnheit an. Jeder abgehakte Tag faerbt eine Kachel ein."
+            text="Lege deine erste Gewohnheit an. Jeder abgehakte Tag färbt eine Kachel ein."
             aktion={
               <Button groesse="breit" onClick={oeffneAnlegen}>
                 <Plus size={18} /> Erstes Habit erstellen

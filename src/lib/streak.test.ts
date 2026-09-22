@@ -217,7 +217,7 @@ describe('aktuelleStreak - X-mal pro Woche', () => {
   });
 
   it('bewertet die Anfangswoche anteilig', () => {
-    // Erst am Freitag angelegt: fuer die Restwoche reicht ein Tag
+    // Erst am Freitag angelegt: für die Restwoche reicht ein Tag
     const spaet = habit({
       frequenz: { typ: 'malProWoche', malProWoche: 3 },
       erstelltAm: '2026-09-11T08:00:00.000Z',
