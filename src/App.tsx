@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/layout/AppShell';
 import { ToastProvider } from './components/ui/ToastProvider';
+import { usePwaAktualisierung } from './hooks/usePwaAktualisierung';
 import { useTheme } from './hooks/useTheme';
+import { useToast } from './hooks/useToast';
 import DashboardPage from './pages/DashboardPage';
 import HabitDetailPage from './pages/HabitDetailPage';
 import SettingsPage from './pages/SettingsPage';
@@ -13,6 +16,7 @@ export default function App() {
 
   return (
     <ToastProvider>
+      <OfflineHinweis />
       <Routes>
         <Route element={<AppShell />}>
           <Route index element={<DashboardPage />} />
@@ -24,4 +28,18 @@ export default function App() {
       </Routes>
     </ToastProvider>
   );
+}
+
+/** Einmalige Rueckmeldung, sobald die App offline lauffaehig ist. */
+function OfflineHinweis() {
+  const { offlineBereit, quittieren } = usePwaAktualisierung();
+  const { zeige } = useToast();
+
+  useEffect(() => {
+    if (!offlineBereit) return;
+    zeige('Kachelwerk ist jetzt offline verfügbar', 'erfolg');
+    quittieren();
+  }, [offlineBereit, quittieren, zeige]);
+
+  return null;
 }
