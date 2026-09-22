@@ -9,6 +9,22 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Theme vor dem ersten Rendern setzen, damit nichts aufblitzt.
+      (function () {
+        try {
+          var wahl = localStorage.getItem('kachelwerk-theme') || 'dunkel';
+          var dunkel =
+            wahl === 'dunkel' ||
+            (wahl === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', dunkel);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', dunkel ? '#0b0d10' : '#f5f6f9');
+        } catch (e) {
+          /* localStorage gesperrt: Dark bleibt als Standard aktiv */
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
