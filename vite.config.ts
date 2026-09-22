@@ -11,6 +11,12 @@ const base = process.env.VITE_BASE ?? '/';
 
 export default defineConfig({
   base,
+  build: {
+    // React, Dexie, Framer Motion und dnd-kit ergeben zusammen rund 600 kB
+    // (etwa 200 kB gzip). Die App wird einmal vorgeladen und laeuft danach
+    // offline, daher ist das bewusst so akzeptiert.
+    chunkSizeWarningLimit: 700,
+  },
   plugins: [
     react(),
     tailwindcss(),
