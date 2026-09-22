@@ -1,18 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { LayoutGrid, Plus } from 'lucide-react';
 import { useState } from 'react';
+import { HabitSheet } from '../components/form/HabitSheet';
 import { HabitCard } from '../components/habit/HabitCard';
 import { PageHeader } from '../components/layout/PageHeader';
 import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
-import { Sheet } from '../components/ui/Sheet';
-import { erstelleHabit, setzeAnzahl, tippeHabitAn } from '../db/repo';
+import { setzeAnzahl, tippeHabitAn } from '../db/repo';
 import { useAktiveHabits, useAlleAnzahlKarten } from '../hooks/useHabits';
 import { useHeute } from '../hooks/useHeute';
 import { useToast } from '../hooks/useToast';
-import { STANDARD_FARBE } from '../lib/colors';
 import { formatiereDatum } from '../lib/dates';
-import { STANDARD_ICON } from '../lib/icons';
 import type { Habit } from '../types/models';
 
 const LEERE_KARTE = new Map<string, number>();
@@ -22,7 +20,9 @@ export default function DashboardPage() {
   const karten = useAlleAnzahlKarten();
   const heuteSchluessel = useHeute();
   const { zeige } = useToast();
-  const [anlegenOffen, setAnlegenOffen] = useState(false);
+  const [sheet, setSheet] = useState<{ offen: boolean; nr: number }>({ offen: false, nr: 0 });
+
+  const oeffneAnlegen = () => setSheet((bisher) => ({ offen: true, nr: bisher.nr + 1 }));
 
   const laedt = habits === undefined || karten === undefined;
 
@@ -43,7 +43,7 @@ export default function DashboardPage() {
         aktion={
           <button
             type="button"
-            onClick={() => setAnlegenOffen(true)}
+            onClick={oeffneAnlegen}
             aria-label="Neues Habit"
             className="bg-akzent flex size-11 items-center justify-center rounded-full text-white transition active:brightness-95"
           >
@@ -61,7 +61,7 @@ export default function DashboardPage() {
             titel="Noch keine Gewohnheit"
             text="Lege deine erste Gewohnheit an. Jeder abgehakte Tag faerbt eine Kachel ein."
             aktion={
-              <Button groesse="breit" onClick={() => setAnlegenOffen(true)}>
+              <Button groesse="breit" onClick={oeffneAnlegen}>
                 <Plus size={18} /> Erstes Habit erstellen
               </Button>
             }
@@ -94,10 +94,11 @@ export default function DashboardPage() {
         )}
       </div>
 
-      <SchnellAnlegen
-        offen={anlegenOffen}
-        onSchliessen={() => setAnlegenOffen(false)}
-        onAngelegt={(name) => zeige(`"${name}" angelegt`)}
+      <HabitSheet
+        key={sheet.nr}
+        offen={sheet.offen}
+        onSchliessen={() => setSheet((bisher) => ({ ...bisher, offen: false }))}
+        onGespeichert={(name) => zeige(`"${name}" angelegt`)}
       />
     </>
   );
@@ -110,59 +111,5 @@ function SkelettListe() {
         <div key={i} className="border-rand bg-karte h-24 animate-pulse rounded-2xl border" />
       ))}
     </div>
-  );
-}
-
-/**
- * Schlanke Anlegemaske. Phase 4 ersetzt sie durch das vollstaendige Formular
- * mit Icon-, Farb- und Frequenzauswahl.
- */
-function SchnellAnlegen({
-  offen,
-  onSchliessen,
-  onAngelegt,
-}: {
-  offen: boolean;
-  onSchliessen: () => void;
-  onAngelegt: (name: string) => void;
-}) {
-  const [name, setName] = useState('');
-
-  const speichern = async () => {
-    const getrimmt = name.trim();
-    if (!getrimmt) return;
-    await erstelleHabit({
-      name: getrimmt,
-      icon: STANDARD_ICON,
-      farbe: STANDARD_FARBE,
-      zielProTag: 1,
-      frequenz: { typ: 'taeglich' },
-    });
-    setName('');
-    onAngelegt(getrimmt);
-    onSchliessen();
-  };
-
-  return (
-    <Sheet
-      offen={offen}
-      onSchliessen={onSchliessen}
-      titel="Neue Gewohnheit"
-      fuss={
-        <Button groesse="breit" disabled={!name.trim()} onClick={() => void speichern()}>
-          Anlegen
-        </Button>
-      }
-    >
-      <label className="block pb-4">
-        <span className="text-schwach text-xs">Name</span>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="z. B. Wasser trinken"
-          className="border-rand bg-vertiefung focus:border-akzent mt-1 h-12 w-full rounded-xl border px-3 text-sm outline-none"
-        />
-      </label>
-    </Sheet>
   );
 }

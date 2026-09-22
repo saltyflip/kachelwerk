@@ -44,7 +44,7 @@ function DialogInhalt({
   const freigegeben = !tippwort || eingabe.trim().toUpperCase() === tippwort.toUpperCase();
 
   return (
-    <div className="fixed inset-0 z-60 flex items-center justify-center px-6">
+    <motion.div key="dialog" className="fixed inset-0 z-60 flex items-center justify-center px-6">
       <motion.div
         className="absolute inset-0 bg-black/60"
         initial={{ opacity: 0 }}
@@ -96,7 +96,7 @@ function DialogInhalt({
           </Button>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
