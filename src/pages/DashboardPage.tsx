@@ -1,19 +1,16 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import { LayoutGrid, Plus } from 'lucide-react';
 import { useState } from 'react';
 import { HabitSheet } from '../components/form/HabitSheet';
-import { HabitCard } from '../components/habit/HabitCard';
+import { SortableHabitList } from '../components/habit/SortableHabitList';
 import { PageHeader } from '../components/layout/PageHeader';
 import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
-import { setzeAnzahl, tippeHabitAn } from '../db/repo';
+import { setzeAnzahl, setzeReihenfolge, tippeHabitAn } from '../db/repo';
 import { useAktiveHabits, useAlleAnzahlKarten } from '../hooks/useHabits';
 import { useHeute } from '../hooks/useHeute';
 import { useToast } from '../hooks/useToast';
 import { formatiereDatum } from '../lib/dates';
 import type { Habit } from '../types/models';
-
-const LEERE_KARTE = new Map<string, number>();
 
 export default function DashboardPage() {
   const habits = useAktiveHabits();
@@ -69,28 +66,14 @@ export default function DashboardPage() {
         )}
 
         {!laedt && habits.length > 0 && (
-          <ul className="flex flex-col gap-3">
-            <AnimatePresence initial={false}>
-              {habits.map((habit) => (
-                <motion.li
-                  key={habit.id}
-                  layout
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.18 }}
-                >
-                  <HabitCard
-                    habit={habit}
-                    karte={karten.get(habit.id) ?? LEERE_KARTE}
-                    heuteSchluessel={heuteSchluessel}
-                    onTippen={beiTippen}
-                    onZuruecksetzen={beiZuruecksetzen}
-                  />
-                </motion.li>
-              ))}
-            </AnimatePresence>
-          </ul>
+          <SortableHabitList
+            habits={habits}
+            karten={karten}
+            heuteSchluessel={heuteSchluessel}
+            onTippen={beiTippen}
+            onZuruecksetzen={beiZuruecksetzen}
+            onReihenfolge={(ids) => void setzeReihenfolge(ids)}
+          />
         )}
       </div>
 
