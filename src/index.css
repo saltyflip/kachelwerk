@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+
+/* Theme-Umschaltung ueber die Klasse .dark am <html>-Element */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   Design-Tokens. Die eigentlichen Werte haengen am Theme (:root /
+   .dark), Tailwind bekommt sie ueber @theme inline durchgereicht.
+   --------------------------------------------------------------- */
+@theme inline {
+  --color-flaeche: var(--kw-flaeche);
+  --color-karte: var(--kw-karte);
+  --color-vertiefung: var(--kw-vertiefung);
+  --color-rand: var(--kw-rand);
+  --color-text: var(--kw-text);
+  --color-leise: var(--kw-leise);
+  --color-schwach: var(--kw-schwach);
+  --color-akzent: var(--kw-akzent);
+  --color-akzent-weich: var(--kw-akzent-weich);
+  --color-gefahr: var(--kw-gefahr);
+
+  --font-sans: 'Inter var', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-karte: 1rem;
+  --radius-kachel: 2.5px;
+}
+
+:root {
+  color-scheme: light;
+  --kw-flaeche: #f5f6f9;
+  --kw-karte: #ffffff;
+  --kw-vertiefung: #e7eaf0;
+  --kw-rand: #e0e4ec;
+  --kw-text: #12161d;
+  --kw-leise: #5b6472;
+  --kw-schwach: #98a1af;
+  --kw-akzent: #4f5ae8;
+  --kw-akzent-weich: #eceefd;
+  --kw-gefahr: #d5352f;
+}
+
+.dark {
+  color-scheme: dark;
+  --kw-flaeche: #0b0d10;
+  --kw-karte: #15181e;
+  --kw-vertiefung: #1e232b;
+  --kw-rand: #262c36;
+  --kw-text: #f1f3f7;
+  --kw-leise: #99a1ae;
+  --kw-schwach: #5d6674;
+  --kw-akzent: #6d7cff;
+  --kw-akzent-weich: #1b1f33;
+  --kw-gefahr: #f2564b;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-flaeche text-text font-sans antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  /* Formularelemente erben die Schrift, sonst zeigt iOS Serifen */
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--kw-akzent);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Safe-Area-Insets fuer Notch und Home-Indicator */
+  .pt-sicher {
+    padding-top: max(env(safe-area-inset-top), 0.5rem);
+  }
+  .pb-sicher {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+  }
+  .px-sicher {
+    padding-left: max(env(safe-area-inset-left), 0px);
+    padding-right: max(env(safe-area-inset-right), 0px);
+  }
+  .keine-scrollbar {
+    scrollbar-width: none;
+  }
+  .keine-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
