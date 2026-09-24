@@ -3,7 +3,7 @@
 > Gewohnheiten verfolgen — offline, ohne Konto, ohne Server.
 
 [![Deploy auf GitHub Pages](https://github.com/saltyflip/kachelwerk/actions/workflows/deploy.yml/badge.svg)](https://github.com/saltyflip/kachelwerk/actions/workflows/deploy.yml)
-[![Lizenz: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/Lizenz-PolyForm%20Noncommercial%201.0.0-blue.svg)](LICENSE)
+[![Lizenz: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/Lizenz-PolyForm%20Noncommercial%201.0.0-blue.svg)](LICENSE.md)
 [![PWA](https://img.shields.io/badge/PWA-installierbar-5a5fe0.svg)](#auf-dem-handy-installieren)
 
 Kachelwerk ist ein Habit-Tracker als installierbare Web-App. Jede Gewohnheit
@@ -212,7 +212,7 @@ bitte `npm run lint` und `npm test` laufen lassen.
 
 ## Lizenz
 
-[PolyForm Noncommercial License 1.0.0](LICENSE) — Copyright (c) 2026 Filip Tomsik.
+[PolyForm Noncommercial License 1.0.0](LICENSE.md) — Copyright (c) 2026 Filip Tomsik.
 
 **Erlaubt** ist jede nichtkommerzielle Nutzung: privater Gebrauch, Lernen,
 Ausprobieren, Hobbyprojekte, Forschung sowie der Einsatz in Schulen,
@@ -227,7 +227,7 @@ eine gesonderte schriftliche Erlaubnis von mir.
 
 Die Software wird ohne jede Gewährleistung bereitgestellt; eine Haftung für
 Schäden aus ihrer Nutzung ist im Rahmen des gesetzlich Zulässigen
-ausgeschlossen. Maßgeblich ist allein der Wortlaut in [LICENSE](LICENSE).
+ausgeschlossen. Maßgeblich ist allein der Wortlaut in [LICENSE](LICENSE.md).
 
 ### Fremde Software
 

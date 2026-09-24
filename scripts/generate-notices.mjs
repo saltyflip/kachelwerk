@@ -70,7 +70,7 @@ const lizenzarten = [...new Set(alle.map((p) => p.lizenz))].sort();
 const inhalt = `# Lizenzhinweise zu Drittanbieter-Software
 
 Kachelwerk selbst steht unter der PolyForm Noncommercial License 1.0.0
-(siehe [LICENSE](LICENSE)) und darf nur nichtkommerziell genutzt werden.
+(siehe [LICENSE](LICENSE.md)) und darf nur nichtkommerziell genutzt werden.
 Daneben verwendet das Projekt die unten aufgeführte Open-Source-Software.
 Alle Rechte an diesen Paketen liegen bei den jeweiligen Urheberinnen und
 Urhebern; die Nennung erfolgt, um deren Lizenzbedingungen zu erfüllen.
