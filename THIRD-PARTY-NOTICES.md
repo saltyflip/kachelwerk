@@ -1,6 +1,7 @@
 # Lizenzhinweise zu Drittanbieter-Software
 
-Kachelwerk selbst steht unter der MIT-Lizenz (siehe [LICENSE](LICENSE)).
+Kachelwerk selbst steht unter der PolyForm Noncommercial License 1.0.0
+(siehe [LICENSE](LICENSE)) und darf nur nichtkommerziell genutzt werden.
 Daneben verwendet das Projekt die unten aufgeführte Open-Source-Software.
 Alle Rechte an diesen Paketen liegen bei den jeweiligen Urheberinnen und
 Urhebern; die Nennung erfolgt, um deren Lizenzbedingungen zu erfüllen.
@@ -13,7 +14,7 @@ Diese Datei wird erzeugt, nicht von Hand gepflegt. Aktualisieren mit:
 npm run licenses
 ```
 
-Stand: 2026-09-22
+Stand: 2026-09-24
 
 ## In die Anwendung eingebunden
 

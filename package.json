@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Kachelwerk - Habit-Tracker als lokale PWA, offline und ohne Konto",
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "author": "Filip Tomsik",
   "homepage": "https://saltyflip.github.io/kachelwerk/",
   "repository": {
